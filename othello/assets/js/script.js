@@ -66,22 +66,182 @@ $(function(){
 			}
 
 			//test puis retournement
+			//axe X+
 			possible=false;
 			continu=true;
 			compteur=0;
 
-			for (i=posx;continu;i++){
-				if(plateau[posy][i+1]===autrejoueur){
+			for (x=posx;continu;x++){
+				if(plateau[posy][x+1]===autrejoueur){
 					compteur++;
 				}
 				else {
 					continu=false;
-					if (plateau[posy][i+1]===joueur){
+					if (plateau[posy][x+1]===joueur){
 					possible=true;
 					}
 				}
 			}
+			if (possible) {
+				for (x=posx;x<(posx+compteur);x++){
+					plateau[posy][x+1]=joueur;
+				}
+			}
 
+			//axe X-
+			possible=false;
+			continu=true;
+			compteur=0;
+
+			for (x=posx;continu;x--){
+				if(plateau[posy][x-1]===autrejoueur){
+					compteur++;
+				}
+				else {
+					continu=false;
+					if (plateau[posy][x-1]===joueur){
+					possible=true;
+					}
+				}
+			}
+			if (possible) {
+				for (x=posx;x>(posx-compteur);x--){
+					plateau[posy][x-1]=joueur;
+				}
+			}
+
+			//axe y+
+			possible=false;
+			continu=true;
+			compteur=0;
+
+			for (y=posy;(continu && (y<7));y++){
+				if(plateau[y+1][posx]===autrejoueur){
+					compteur++;
+				}
+				else {
+					continu=false;
+					if (plateau[y+1][posx]===joueur){
+					possible=true;
+					}
+				}
+			}
+			if (possible) {
+				for (y=posy;y<(posy+compteur);y++){
+					plateau[y+1][posx]=joueur;
+				}
+			}
+
+			//axe y-
+			possible=false;
+			continu=true;
+			compteur=0;
+
+			for (y=posy;(continu && (y>0));y--){
+				if(plateau[y-1][posx]===autrejoueur){
+					compteur++;
+				}
+				else {
+					continu=false;
+					if (plateau[y-1][posx]===joueur){
+					possible=true;
+					}
+				}
+			}
+			if (possible) {
+				for (y=posy;y>(posy-compteur);y--){
+					plateau[y-1][posx]=joueur;
+				}
+			}
+
+
+			//axe y+x+
+			possible=false;
+			continu=true;
+			compteur=0;
+
+			for (x=posx y=posy;(continu && (y<7));x++ y++){
+				if(plateau[y+1][x+1]===autrejoueur){
+					compteur++;
+				}
+				else {
+					continu=false;
+					if (plateau[y+1][x+1]===joueur){
+					possible=true;
+					}
+				}
+			}
+			if (possible) {
+				for (x=posx y=posy;x<(posx+compteur);x++ y++){
+					plateau[y+1][i+1]=joueur;
+				}
+			}
+
+			//axe y+x-
+			possible=false;
+			continu=true;
+			compteur=0;
+
+			for (x=posx y=posy ;(continu && (y<7));x-- y++){
+				if(plateau[y+1][x-1]===autrejoueur){
+					compteur++;
+				}
+				else {
+					continu=false;
+					if (plateau[y+1][x-1]===joueur){
+					possible=true;
+					}
+				}
+			}
+			if (possible) {
+				for (x=posx y=posy ;x>(posx-compteur);x-- y++){
+					plateau[y+1][x-1]=joueur;
+				}
+			}
+
+			//axe y-x+
+			possible=false;
+			continu=true;
+			compteur=0;
+
+			for (x=posx y=posy;(continu && (y>0));x++ y--){
+				if(plateau[y-1][x+1]===autrejoueur){
+					compteur++;
+				}
+				else {
+					continu=false;
+					if (plateau[y-1][x+1]===joueur){
+					possible=true;
+					}
+				}
+			}
+			if (possible) {
+				for (x=posx y=posy;x<(posx+compteur);x++ y--){
+					plateau[y-1][x+1]=joueur;
+				}
+			}
+
+			//axe y-x-
+			possible=false;
+			continu=true;
+			compteur=0;
+
+			for (x=posx y=posy;(continu && (y>0));x-- y--){
+				if(plateau[y-1][x-1]===autrejoueur){
+					compteur++;
+				}
+				else {
+					continu=false;
+					if (plateau[y-1][x-1]===joueur){
+					possible=true;
+					}
+				}
+			}
+			if (possible) {
+				for (x=posx y=posy;x>(posx-compteur);x-- y--){
+					plateau[y-1][x-1]=joueur;
+				}
+			}
 
 			//changement de joueur
 			if (joueur==="noir") {
