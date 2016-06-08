@@ -24,11 +24,6 @@ $(function(){
 	plateau[3][4]="noir";
 	plateau[4][3]="noir";
 
-	$("#33").off("click");
-	$("#44").off("click");
-	$("#34").off("click");
-	$("#43").off("click");
-
 	for (var i=0;i<8;i++){
 		for (var y=0;y<8;y++){
 			if (plateau[y][i]==="blanc"){
@@ -40,7 +35,6 @@ $(function(){
 
 		}
 	}
-
 
 
 	$("td").click(function(){
@@ -66,182 +60,23 @@ $(function(){
 			}
 
 			//test puis retournement
-			//axe X+
-			possible=false;
-			continu=true;
-			compteur=0;
+			//test y0 x+
+			cherche("","+");
+			//test y0 x-
+			cherche("","-");
+			//test y+ x0
+			cherche("+","");
+			//test y- x0
+			cherche("-","");
+			//test y+ x+
+			cherche("+","+");
+			//test y+ x-
+			cherche("+","-");
+			//test y- x+
+			cherche("-","+");
+			//test y- x-
+			cherche("-","-");
 
-			for (x=posx;continu;x++){
-				if(plateau[posy][x+1]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[posy][x+1]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (x=posx;x<(posx+compteur);x++){
-					plateau[posy][x+1]=joueur;
-				}
-			}
-
-			//axe X-
-			possible=false;
-			continu=true;
-			compteur=0;
-
-			for (x=posx;continu;x--){
-				if(plateau[posy][x-1]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[posy][x-1]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (x=posx;x>(posx-compteur);x--){
-					plateau[posy][x-1]=joueur;
-				}
-			}
-
-			//axe y+
-			possible=false;
-			continu=true;
-			compteur=0;
-
-			for (y=posy;(continu && (y<7));y++){
-				if(plateau[y+1][posx]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[y+1][posx]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (y=posy;y<(posy+compteur);y++){
-					plateau[y+1][posx]=joueur;
-				}
-			}
-
-			//axe y-
-			possible=false;
-			continu=true;
-			compteur=0;
-
-			for (y=posy;(continu && (y>0));y--){
-				if(plateau[y-1][posx]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[y-1][posx]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (y=posy;y>(posy-compteur);y--){
-					plateau[y-1][posx]=joueur;
-				}
-			}
-
-
-			//axe y+x+
-			possible=false;
-			continu=true;
-			compteur=0;
-
-			for (x=posx y=posy;(continu && (y<7));x++ y++){
-				if(plateau[y+1][x+1]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[y+1][x+1]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (x=posx y=posy;x<(posx+compteur);x++ y++){
-					plateau[y+1][i+1]=joueur;
-				}
-			}
-
-			//axe y+x-
-			possible=false;
-			continu=true;
-			compteur=0;
-
-			for (x=posx y=posy ;(continu && (y<7));x-- y++){
-				if(plateau[y+1][x-1]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[y+1][x-1]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (x=posx y=posy ;x>(posx-compteur);x-- y++){
-					plateau[y+1][x-1]=joueur;
-				}
-			}
-
-			//axe y-x+
-			possible=false;
-			continu=true;
-			compteur=0;
-
-			for (x=posx y=posy;(continu && (y>0));x++ y--){
-				if(plateau[y-1][x+1]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[y-1][x+1]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (x=posx y=posy;x<(posx+compteur);x++ y--){
-					plateau[y-1][x+1]=joueur;
-				}
-			}
-
-			//axe y-x-
-			possible=false;
-			continu=true;
-			compteur=0;
-
-			for (x=posx y=posy;(continu && (y>0));x-- y--){
-				if(plateau[y-1][x-1]===autrejoueur){
-					compteur++;
-				}
-				else {
-					continu=false;
-					if (plateau[y-1][x-1]===joueur){
-					possible=true;
-					}
-				}
-			}
-			if (possible) {
-				for (x=posx y=posy;x>(posx-compteur);x-- y--){
-					plateau[y-1][x-1]=joueur;
-				}
-			}
 
 			//changement de joueur
 			if (joueur==="noir") {
@@ -269,3 +104,60 @@ $(function(){
 
 });//fin jquery
 
+function cherche (sensy,sensx){
+
+	var possible=false;
+	var continu=true;
+	var compteur=0;
+	var x=posx;
+	var y=posy;
+	var limity=false;
+	var mouvy;
+	var mouvx;
+
+	if (sensy==="+"){if(y===7){limity=true;}}
+	if (sensy==="-"){if(y===0){limity=true;}}
+
+	while (continu && (!limity)){
+
+		if (sensy==="+"){mouvy=y+1;}
+		if (sensy==="-"){mouvy=y-1;}
+		if (sensy===""){mouvy=y;}
+		if (sensx==="+"){mouvx=x+1;}
+		if (sensx==="-"){mouvx=x-1;}
+		if (sensx===""){mouvx=x;}
+
+		if(plateau[mouvy][mouvx]===autrejoueur){compteur++;}
+		else {
+			continu=false;
+			if (plateau[mouvy][mouvx]===joueur){possible=true;}
+		}
+		if (sensy==="+"){y++;}
+		if (sensy==="-"){y--;}
+		if (sensx==="+"){x++;}
+		if (sensx==="-"){x--;}
+		if (sensy==="+"){if(y===7){limity=true;}}
+		if (sensy==="-"){if(y===0){limity=true;}}
+	}
+	if (possible) {
+		x=posx;
+		y=posy;
+
+		for (i=0;i<compteur;i++){
+
+			if (sensy==="+"){mouvy=y+1;}
+			if (sensy==="-"){mouvy=y-1;}
+			if (sensy===""){mouvy=y;}
+			if (sensx==="+"){mouvx=x+1;}
+			if (sensx==="-"){mouvx=x-1;}
+			if (sensx===""){mouvx=x;}
+
+			plateau[mouvy][mouvx]=joueur;
+
+			if (sensy==="+"){y++;}
+			if (sensy==="-"){y--;}
+			if (sensx==="+"){x++;}
+			if (sensx==="-"){x--;}
+		}
+	}
+}
