@@ -1,8 +1,8 @@
 body {
     margin:auto;
     padding: 1em;
-    color: #282828;
-    background:#223;
+    color: black;
+    background:#c4c3c3;
     text-align: center;
 
 }
@@ -16,7 +16,9 @@ body {
         font-family:"times new roman", times, serif;
 }
 h1{
+    color:black;
     margin:0;
+    font-size: 4em;
 }
 
 table{
@@ -37,10 +39,28 @@ td:active{
     transform: translateY(0.5%) scale(0.95) rotate(0deg);
 }
 
+
 .blanc{
     color:white;
 }
 
 .noir{
     color:black;
+}
+
+
+footer {
+    font-size: 1em;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+footer .tour{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+footer #joueur{
+    font-size: 2em;
 }
