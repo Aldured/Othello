@@ -1,10 +1,69 @@
 body {
+    min-width: 650px;
+    height: 100vh;
     margin:auto;
-    padding: 1em;
+    padding: 0;
     color: black;
-    background:#c4c3c3;
+    background:#c4c3c3 url(../img/bois.jpg) no-repeat center top;
+    background-size:cover;
     text-align: center;
+}
 
+header {
+    font-size: 1em;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 118px;
+}
+
+h1{
+    width: 40vw;
+    color:black;
+    margin:0;
+    padding-top:0.5em;
+    font-size: 4em;
+}
+
+.btn {
+    width: 30vw;
+    display: flex;
+    display:none;
+}
+
+.reload {
+    display:none;
+    margin: auto;
+    color: black;
+    font-size: 3em;
+    text-shadow: 0.05em 0.05em 0.1em black;
+    height: 50%;
+    border-color: black;
+    border-style: outset;
+    border-top: none;
+    border-left: none;
+    background: black url(../img/bois.jpg) no-repeat center top;
+    background-size:cover;
+
+}
+
+.reload:hover{
+    transform: translateY(0.5%) scale(0.95) rotate(0deg);
+}
+
+.victoir {
+    display:none;
+    width: 30vw;}
+
+.victoir img{
+
+    vertical-align: middle;
+
+}
+
+.victoir .fa{
+    font-size: 4em;
+    vertical-align: middle;
 }
 
 .container{
@@ -14,11 +73,6 @@ body {
         justify-content: space-around;
         align-items: center;
         font-family:"times new roman", times, serif;
-}
-h1{
-    color:black;
-    margin:0;
-    font-size: 4em;
 }
 
 table{
@@ -40,27 +94,15 @@ td:active{
 }
 
 
-.blanc{
+.blanc {
     color:white;
 }
 
-.noir{
+.noir {
     color:black;
 }
 
+.indic{
+    font-size: 2.5em;
+}
 
-footer {
-    font-size: 1em;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-}
-footer .tour{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-}
-footer #joueur{
-    font-size: 2em;
-}

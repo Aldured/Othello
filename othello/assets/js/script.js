@@ -36,7 +36,6 @@ $(function(){
 		}
 	}
 
-
 	$("td").click(function(){
 		// verification si case deja occupée
 
@@ -132,8 +131,41 @@ $(function(){
 					autrejoueur="blanc";
 				}
 			}
+			//affichage du joueur en cours
 			if(joueur==="noir"){ $("#joueur").removeClass().addClass("noir");	}
 			else{$("#joueur").removeClass().addClass("blanc");}
+
+			//comptage des scores
+			nbblanc=0;
+			nbnoir=0;
+			for (var i=0;i<8;i++){
+				for (var y=0;y<8;y++){
+
+
+					if (plateau[y][i]==="blanc"){
+						nbblanc++;
+					}
+					if (plateau[y][i]==="noir") {
+						nbnoir++;
+					}
+
+					//affichage des scores
+					$("#score").html("<i class=\"fa fa-circle blanc\" aria-hidden=\"true\"></i>		"+nbblanc+"			<i class=\"fa fa-circle noir\" aria-hidden=\"true\"></i>		"+nbnoir);
+				}
+			}
+			if ((nbnoir+nbblanc)===64){
+
+				$('.btn').fadeIn(300);
+				$('.reload').fadeIn(300);
+				$('.victoir').fadeIn(300);
+				$('.reload').click(function() {location.reload()});
+
+				if (nbnoir>nbblanc) {$("#gagnant").removeClass().addClass("noir");}
+				else{
+					if( nbblanc>nbnoir){$("#gagnant").removeClass().addClass("blanc");}
+					else {(".victoir").html("Egalitée");}
+				}
+			}
 		}
 	}); //fin de fonction click
 
