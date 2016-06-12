@@ -27,13 +27,11 @@ h1{
 
 .btn {
     width: 30vw;
-    display: flex;
     display:none;
 }
 
 .reload {
-    display:none;
-    margin: auto;
+    margin-top: 1em;
     color: black;
     font-size: 3em;
     text-shadow: 0.05em 0.05em 0.1em black;
@@ -49,6 +47,10 @@ h1{
 
 .reload:hover{
     transform: translateY(0.5%) scale(0.95) rotate(0deg);
+    cursor: pointer;
+}
+.reload:focus{
+    outline: 0;
 }
 
 .victoir {

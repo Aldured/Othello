@@ -156,7 +156,6 @@ $(function(){
 			if ((nbnoir+nbblanc)===64){
 
 				$('.btn').fadeIn(300);
-				$('.reload').fadeIn(300);
 				$('.victoir').fadeIn(300);
 				$('.reload').click(function() {location.reload()});
 
